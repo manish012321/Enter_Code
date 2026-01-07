@@ -1,13 +1,31 @@
 import express from 'express'
-import {ENV} from './lib/env.js'
+import { ENV } from './lib/env.js'
+import path from 'path'
 
 const app = express()
+const __dirname = path.resolve()
 
 app.get('/', (req, res) => {
-  res.status(200).json({msg: 'Server is running'})
-})  
+  res.status(200).json({ msg: 'Server is running' })
+})
+
+app.get('/books', (req, res) => {
+  res.status(200).json({ msg: 'Books endpoint' })
+})
+
+// Make your app production ready
+if (ENV.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/dist')))
+
+ 
+  app.use((req, res) => {
+    res.sendFile(
+      path.join(__dirname, '../frontend/dist', 'index.html')
+    )
+  })
+}
 
 const PORT = ENV.PORT || 5000
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
-})  
+})
