@@ -6,8 +6,7 @@ import path from 'path';
 import { connectDB } from './lib/db.js';
 import { inngest } from './lib/Inngest.js';
 
-// IMPORTANT: ensure you import your Inngest functions
-import * as functions from './inngest/functions.js';
+
 
 const app = express();
 const __dirname = path.resolve();
