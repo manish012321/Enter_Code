@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import serve from 'inngest/express';
+import { serve } from 'inngest/express';
 import { ENV } from './lib/env.js';
 import path from 'path';
 import { connectDB } from './lib/db.js';
