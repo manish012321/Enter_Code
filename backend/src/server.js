@@ -4,7 +4,7 @@ import { serve } from 'inngest/express';
 import { ENV } from './lib/env.js';
 import path from 'path';
 import { connectDB } from './lib/db.js';
-import { inngest } from './lib/Inngest.js';
+import { inngest , functions } from './lib/Inngest.js';
 
 
 
