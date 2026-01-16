@@ -5,7 +5,7 @@ const App = () => {
   const [books, setBooks] = useState(null)
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/books`)
+    fetch(`${import.meta.env.VITE_API_URL}books`)
       .then(res => res.json())
       .then(data => setBooks(data.msg))
       .catch(err => console.error(err))
