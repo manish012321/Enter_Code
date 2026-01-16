@@ -1,17 +1,25 @@
 import { SignInButton } from '@clerk/clerk-react'
-import React from 'react'
+import { useEffect, useState } from 'react'
 
 const App = () => {
+  const [books, setBooks] = useState(null)
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/books`)
+      .then(res => res.json())
+      .then(data => setBooks(data.msg))
+      .catch(err => console.error(err))
+  }, [])
+
   return (
     <>
-    <h1> welcome </h1>
+      <h1>Welcome</h1>
 
-    <SignInButton mode='modal'>
-      <button>
-        Get Started
-      </button>
-    </SignInButton>
+      <SignInButton mode="modal">
+        <button>Get Started</button>
+      </SignInButton>
 
+      <p>{books}</p>
     </>
   )
 }
